@@ -71,19 +71,19 @@ class RollDice extends Component{
                 // Set rolling to false again when time over
                 this.setState({rolling:false})
                 },3000)
-            //Save result
-            var now = new Date();
-            axios.post(`http://localhost:8080/luuketqua`,{
-              Id_User : "bbef383a-6e00-4893-a193-0de462d48ffd",
-              Time : now.getHours().toString()+":"+now.getMinutes().toString(),
-              Bet : this.state.bet,
-              Choose : this.state.HL,
-              Result : "Error"})//Select result 
-            .then(res => {
-              console.log(res);
-              console.log(res.data);
-          })
-          }
+                //Save betting result 
+                var now = new Date();
+                axios.post(`http://localhost:8080/luuketqua`,{
+                  Id_User : "bbef383a-6e00-4893-a193-0de462d48ffd",
+                  Time : now.getHours().toString()+":"+now.getMinutes().toString(),
+                  Bet : this.state.bet,
+                  Choose : this.state.HL,
+                  Result : "Error"})//Fix => Select Result
+                .then(res => {
+                  console.log(res);
+                  console.log(res.data);
+              })
+              }
         else {
           alert("Roll is failed! :((")
         }

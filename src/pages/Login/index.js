@@ -27,6 +27,7 @@ function Login() {
         let u = email.trim();
         let p = password.trim();
         if(u !== "" && p !== "") {
+            //Check login
             axios.post(`http://localhost:8080/dangnhap`,{Email:u,Password:p})
             .then((response) => {
                 console.log(response);

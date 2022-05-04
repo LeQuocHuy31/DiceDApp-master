@@ -101,6 +101,7 @@ function Register() {
         } else if(newUser.Password !== inputRef.current[3].value) {
             inputRef.current[3].focus();
         } else {
+            //Register new user
             axios.post(`http://localhost:8080/dangky`,{Id:newUser.Id,Name:newUser.Name,Email:newUser.Email,Password:newUser.Password})
             .then(res => {
                 console.log(res);
