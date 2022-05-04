@@ -13,6 +13,7 @@ function Home() {
   
     const [user, setUser] = useState({});
     const [connect, setConnect] = useState(false);
+
     const handleLogin = useCallback(() => {
         window.location.href='/login';
     }, [])

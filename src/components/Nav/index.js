@@ -9,7 +9,7 @@ function Navigation()  {
         address: "",
         Balance: null,
     });
-    const [user, setUser] = useState("ThankZ");
+    const [user, setUser] = useState("Menu");
     const handleConnect = () => {
         if (window.ethereum) {
   

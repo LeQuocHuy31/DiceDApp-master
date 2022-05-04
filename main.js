@@ -21,7 +21,7 @@ app.post("/dangnhap", async (req,res)=>{
   }
   else{
     app.get("/checked",async(req,res)=>{
-      res.send("OK");
+      res.send(isUser);
     })
   }
 });
