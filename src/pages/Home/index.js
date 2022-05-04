@@ -12,6 +12,8 @@ function Home() {
     });
   
     const [user, setUser] = useState({});
+    const [idUser, setIdUser] = useState({});
+    const [login, setLogin] = useState(false);
     const [connect, setConnect] = useState(false);
 
     const handleLogin = useCallback(() => {

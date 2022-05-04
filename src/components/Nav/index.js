@@ -9,6 +9,7 @@ function Navigation()  {
         address: "",
         Balance: null,
     });
+    const [connect, setConnect] = useState();
     const [user, setUser] = useState("Menu");
     const handleConnect = () => {
         if (window.ethereum) {
@@ -17,6 +18,7 @@ function Navigation()  {
             window.ethereum
               .request({ method: "eth_requestAccounts" })
               .then((res) => accountChangeHandler(res[0]));
+            setConnect({connect:true});
           } else {
             alert("Install metamask extension!!");
           }
@@ -59,7 +61,7 @@ function Navigation()  {
                             <NavDropdown.Item href="/user"><Link to="/user" style={{textDecoration: 'none', color: 'black'}}>Profile</Link></NavDropdown.Item>
                             <NavDropdown.Item href="#" onClick={handleConnect}>Connect MetaMask</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/login">Logout</NavDropdown.Item>
+                            <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#" onClick={handleConnect}>Connect MetaMask</Nav.Link>
                     </Nav>

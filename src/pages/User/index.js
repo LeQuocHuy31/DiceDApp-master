@@ -6,9 +6,9 @@ function User() {
     const [Bet, setBet] = useState(0);
     const [Choose, setChoose] = useState("");
     const [Result, setResult] = useState("");
-
+    const [idUser, setIdUser] = useState();
     const getResults = () => {
-        axios.get("http://localhost:8080/layketqua/"+"e6197746-12a9-49a4-be50-dbf4be9246e6")
+        axios.get("http://localhost:8080/layketqua/bbef383a-6e00-4893-a193-0de462d48ffd")
         .then((response) =>{
             setRessultList(response.data);
         });

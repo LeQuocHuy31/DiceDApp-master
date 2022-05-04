@@ -6,25 +6,23 @@ app.use(cors());
 app.use(express.json());
 const user = require("./controllers/usercontroller");
 const result = require("./controllers/resultcontroller");
-//
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
 //Login
 app.post("/dangnhap", async (req,res)=>{
   console.log(req.body);
-	email= req.body.email;	
-	password= req.body.password;
-  var isUser = await user.login(email,password);
-  if(!isUser){   
-    return res.status(401).send({ msg:'Thông tin đăng nhập sai. vui lòng kiểm tra lại thông tin đăng nhập'});
-  }
-  else{
-    app.get("/checked",async(req,res)=>{
-      res.send(isUser);
-    })
+	email = req.body.Email;	
+	password = req.body.Password;
+  User = await user.login(email,password);
+  if (User){
+    console.log(User);
+    res.send(User);
   }
 });
+
 //Register
 app.post("/dangky", async (req,res)=>{
   console.log(req.body);
@@ -34,6 +32,7 @@ app.post("/dangky", async (req,res)=>{
 	password = req.body.Password;
   User = await user.insert({Id:id,Name:name,Email:email,Password:password});
 });
+
 //Save Betting Result
 app.post("/luuketqua", async (req,res)=>{
   console.log(req.body);
@@ -44,6 +43,7 @@ app.post("/luuketqua", async (req,res)=>{
   rs = req.body.Result;
   rsInfo = await result.insert({Id_User:id_User,Time:time,Bet:bet,Choose:choose,Result:rs});
 });
+
 //Get Betting Result by Id_User
 app.get("/layketqua/:idUser", async (req,res)=>{
   var id_User = req.params.idUser;
@@ -52,5 +52,4 @@ app.get("/layketqua/:idUser", async (req,res)=>{
 })
 
 const PORT = process.env.PORT || 8080;
-  
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

@@ -12,6 +12,9 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [infoUser, setInfoUser] = useState([]);
+    const [user, setUser] = useState({});
+    const [idUser, setIdUser] = useState("");
     const clientID = "614168778952-4i9u69aejf5i7qne6jcjb8aqgj9ob8n7.apps.googleusercontent.com";
     let inputRef = useRef([]);
     const handleChangeEmail = e => {
@@ -24,12 +27,15 @@ function Login() {
         let u = email.trim();
         let p = password.trim();
         if(u !== "" && p !== "") {
-            axios.post(`http://localhost:8080/dangnhap`,{email:u,password:p})
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                })
-            window.location.href='/';
+            axios.post(`http://localhost:8080/dangnhap`,{Email:u,Password:p})
+            .then((response) => {
+                console.log(response);
+                setInfoUser(response);
+              }, (error) => {
+                console.log(error);
+            });
+            console.log(infoUser);
+            //window.location.href='/';
         }
         if (u === "") {
             inputRef.current[0].focus();

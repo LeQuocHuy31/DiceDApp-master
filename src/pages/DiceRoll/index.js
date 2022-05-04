@@ -2,6 +2,7 @@ import React,{ Component } from 'react'
 import './DiceRoll.scss'
 import Dice from '../Dice'
 import axios from 'axios';
+import {useCallback, useState, useRef} from 'react';
 class RollDice extends Component{
   // Face numbers passes as default props
   static defaultProps = {
@@ -27,7 +28,7 @@ class RollDice extends Component{
   }
   roll(){
     const {sides} = this.props;
-    const value = ['one', 'two', 'three','four', 'five', 'six']
+    const value = ['one', 'two', 'three','four', 'five', 'six'];
     if(this.state.bet && this.state.HL.length) {
       if((this.state.bet !== this.state.price) && window.confirm("You haven't updated your bets yet! Continue?")) {
         if(window.confirm(`Are you sure you want to place a bet for ${this.state.bet} ?`))
@@ -73,11 +74,11 @@ class RollDice extends Component{
             //Save result
             var now = new Date();
             axios.post(`http://localhost:8080/luuketqua`,{
-              Id_User : "e6197746-12a9-49a4-be50-dbf4be9246e6",
+              Id_User : "bbef383a-6e00-4893-a193-0de462d48ffd",
               Time : now.getHours().toString()+":"+now.getMinutes().toString(),
               Bet : this.state.bet,
               Choose : this.state.HL,
-              Result : this.state.resultDice.map(r,index)})//Select result 
+              Result : "Error"})//Select result 
             .then(res => {
               console.log(res);
               console.log(res.data);
